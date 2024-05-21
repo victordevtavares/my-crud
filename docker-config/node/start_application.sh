@@ -10,7 +10,7 @@ fi
 go=0;
 
 function check_running() {
-    nodemon /app.js
+    node /application/app.js
 }
 
 sleep 20; # This is an workaround - the right way to have it is to implement healthchecks running db statements

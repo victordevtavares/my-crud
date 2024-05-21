@@ -3,7 +3,7 @@ services:
   nginx-mycrud:
       container_name: nginx-mycrud
       working_dir: /var/www/html/
-      image: nginx
+      image: nginx:latest
       ports:
         - "80:80"
       volumes:
@@ -12,14 +12,14 @@ services:
 
   node-mycrud:
     container_name: node-mycrud
-    image: node:15
+    image: node:latest
     ports:
      - "9001:9001"
     volumes:
-     - ./backend:/application
-     - ./docker-config/node/start_application.sh:/start_application.sh
+     - ./backend:/application 
+     - ./docker-config/node/start_application.sh:/application/start_application.sh
     restart: always
-    entrypoint: /start_application.sh
+    entrypoint: /application/start_application.sh
     healthcheck:
      test: ["CMD-SHELL", "curl -f http://localhost:9001"]
      interval: 20s
@@ -37,6 +37,6 @@ services:
     restart: always
     ports:
       - "3306:3306"
-    environment:
+    environment:  
       "MYSQL_DATABASE": "my_crud"
       "MYSQL_ROOT_PASSWORD": "mypass"
