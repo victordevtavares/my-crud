@@ -3,7 +3,7 @@ services:
   nginx-mycrud:
       container_name: nginx-mycrud
       working_dir: /var/www/html/
-      image: nginx
+      image: nginx:latest
       ports:
         - "80:80"
       volumes:
@@ -12,7 +12,7 @@ services:
 
   node-mycrud:
     container_name: node-mycrud
-    image: node
+    image: node:latest
     ports:
      - "9001:9001"
     volumes:
@@ -37,6 +37,6 @@ services:
     restart: always
     ports:
       - "3306:3306"
-    environment:
+    environment:  
       "MYSQL_DATABASE": "my_crud"
       "MYSQL_ROOT_PASSWORD": "mypass"
